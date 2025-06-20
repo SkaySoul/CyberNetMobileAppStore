@@ -1,12 +1,13 @@
 import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
-import 'package:http/http.dart';
 
 import '../models/cart.dart';
 import '../models/order.dart';
 import '../models/product/category.dart';
 import '../models/product/fullproduct.dart';
+import '../models/product/manufacturer.dart';
 import '../models/product/product.dart';
 import '../models/product/subcategory.dart';
 import '../models/userdata/shipping_address.dart';
@@ -26,6 +27,8 @@ class APIConnect{
   static const cartUrl = "$hostConnect/cart";
   static const ordersUrl = '$hostConnect/orders';
   static const addressesUrl = '$hostConnect/addresses';
+  static const manufacturerUrl = '$hostConnect/manufacturers';
+
   static String? basicAuthHeader;
 
   static Future<bool> register({
@@ -316,6 +319,15 @@ class APIConnect{
     }
     final List jsonList = jsonDecode(resp.body);
     return jsonList.map((e) => OrderDTO.fromJson(e)).toList();
+  }
+
+  static Future<ManufacturerDTO> getManufacturer({required int id}) async {
+    final resp = await http.get(Uri.parse('$manufacturerUrl/$id'), headers: _headers());
+    if (resp.statusCode != 200) {
+      throw Exception('Failed to load manufacturer (${resp.statusCode})');
+    }
+    final Map<String, dynamic> json = jsonDecode(resp.body);
+    return ManufacturerDTO.fromJson(json);
   }
 
 }

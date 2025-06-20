@@ -1,21 +1,23 @@
-import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
+
 import '../controllers/order_details_controller.dart';
 
 
 class OrderDetailScreen extends GetView<OrderDetailController> {
-  const OrderDetailScreen({super.key});
+  const OrderDetailScreen({super.key, required int id});
 
   @override
   Widget build(BuildContext context) {
     final id = int.parse(Get.parameters['id']!);
-    controller.loadOrder(id);
+    final ctrl = Get.put(OrderDetailController(id));
+    ctrl.loadOrder(id);
     return Scaffold(
       appBar: AppBar(title: Text('Order #$id')),
       body: Obx(() {
-        if (controller.isLoading.value) return const Center(child: CircularProgressIndicator());
-        final o = controller.order.value!;
+        if (ctrl.isLoading.value) return const Center(child: CircularProgressIndicator());
+        final o = ctrl.order.value!;
         return Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
@@ -24,12 +26,12 @@ class OrderDetailScreen extends GetView<OrderDetailController> {
 
               Text(
                 'Date: ${o.createdAt != null ? DateFormat.yMMMd().add_Hm().format(o.createdAt!) : '—'}',
-                style: Theme.of(context).textTheme.subtitle1,
+                style: Theme.of(context).textTheme.titleMedium,
               ),
               const SizedBox(height: 4),
               Text(
                 'Status: ${o.status}',
-                style: Theme.of(context).textTheme.subtitle1,
+                style: Theme.of(context).textTheme.titleMedium,
               ),
               const Divider(height: 32),
 
@@ -38,7 +40,7 @@ class OrderDetailScreen extends GetView<OrderDetailController> {
                 const Divider(height: 32),
               ],
 
-              Text('Items:', style: Theme.of(context).textTheme.headline6),
+              Text('Items:', style: Theme.of(context).textTheme.titleLarge),
               const SizedBox(height: 8),
               Expanded(
                 child: ListView.builder(
@@ -76,11 +78,11 @@ class OrderDetailScreen extends GetView<OrderDetailController> {
                 children: [
                   Text(
                     'Total:',
-                    style: Theme.of(context).textTheme.headline6,
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                   Text(
                     '\$${o.totalAmount.toStringAsFixed(2)}',
-                    style: Theme.of(context).textTheme.headline6,
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                 ],
               ),

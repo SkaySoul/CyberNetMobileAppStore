@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+
 import '../api_connections/api_connect.dart';
 import '../models/cart.dart';
 
@@ -25,7 +26,7 @@ class CartController extends GetxController {
   }
 
   double get total => items.fold(
-      0.0, (sum, ci) => sum + ci!.price * ci!.quantity);
+      0.0, (sum, ci) => sum + ci.price * ci.quantity);
 
   Future<void> checkout() async {
     await APIConnect.checkoutCart();

@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+
 import '../api_connections/api_connect.dart';
 import '../models/product/fullproduct.dart';
-import '../models/product/product.dart';
 
 class ProductDetailController extends GetxController {
   final int productId;
@@ -10,8 +9,10 @@ class ProductDetailController extends GetxController {
   var fullProduct = Rxn<FullProductDTO>();
   var categoryName    = ''.obs;
   var subcategoryName = ''.obs;
-
+  var manufacturerName = ''.obs;
   ProductDetailController(this.productId);
+
+
 
   @override
   void onInit() {
@@ -25,9 +26,11 @@ class ProductDetailController extends GetxController {
       final dto = await APIConnect.getFullProductById(id: productId);
       final cat = await APIConnect.getCategory(id: dto.categoryId);
       final sub = await APIConnect.getSubcategory(id: dto.subcategoryId);
+      final man = await APIConnect.getManufacturer(id: dto.manufacturerId);
       categoryName.value    = cat.name;
       subcategoryName.value = sub.name;
       fullProduct.value = dto;
+      manufacturerName.value = man.name;
     } finally {
       isLoading.value = false;
     }

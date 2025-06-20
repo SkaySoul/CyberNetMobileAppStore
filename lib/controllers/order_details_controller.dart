@@ -1,11 +1,13 @@
 import 'package:get/get.dart';
+
 import '../api_connections/api_connect.dart';
 import '../models/order.dart';
 
 class OrderDetailController extends GetxController {
-  final _api = APIConnect();
   var isLoading = true.obs;
   var order = Rxn<OrderDTO>();
+
+  OrderDetailController(int id);
 
   void loadOrder(int id) async {
     isLoading.value = true;

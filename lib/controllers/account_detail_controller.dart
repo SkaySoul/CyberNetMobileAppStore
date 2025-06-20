@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../api_connections/api_connect.dart';
-import '../models/userdata/user.dart';
 import '../models/userdata/shipping_address.dart';
+import '../models/userdata/user.dart';
 
 class AccountController extends GetxController {
 

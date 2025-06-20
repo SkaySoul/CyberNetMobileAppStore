@@ -1,6 +1,6 @@
 
-import 'product_image.dart';
 import 'product_attributes.dart';
+import 'product_image.dart';
 
 class FullProductDTO {
   final int id;
@@ -8,7 +8,7 @@ class FullProductDTO {
   final String description;
   final int amount;
   final double price;
-  final String serialNumber;
+  final String productCode;
   final int manufacturerId;
   final int categoryId;
   final int subcategoryId;
@@ -21,7 +21,7 @@ class FullProductDTO {
     required this.description,
     required this.amount,
     required this.price,
-    required this.serialNumber,
+    required this.productCode,
     required this.manufacturerId,
     required this.categoryId,
     required this.subcategoryId,
@@ -54,7 +54,7 @@ class FullProductDTO {
       productAttributes: productAttributes,
       images: images,
       amount: (json['amount'] as num).toInt(),
-      serialNumber: json['serialNumber'] as String? ?? '',
+      productCode: json['productCode'] as String? ?? '',
     );
   }
 }

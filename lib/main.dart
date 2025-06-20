@@ -48,7 +48,11 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/order/payment',      page: () => PaymentMethodScreen()),
         GetPage(name: '/order/review',       page: () => ReviewOrderScreen()),
         GetPage(name: '/orders/history',     page: () => const OrderHistoryScreen()),
-        GetPage(name: '/orders/:id',         page: () => const OrderDetailScreen()),
+        GetPage(name: '/orders/:id',         page: () {
+          final idStr = Get.parameters['id'];
+          final id = int.tryParse(idStr ?? '') ?? 0;
+          return OrderDetailScreen(id: id);
+        }),
         GetPage(name: '/menu',               page: () => const MenuScreen()),
         GetPage(name: '/account',            page: () => const AccountDetailsScreen()),
       ],

@@ -1,8 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+
 import '../api_connections/api_connect.dart';
-import '../models/product/product.dart';
 import '../models/product/category.dart';
+import '../models/product/product.dart';
 import '../models/product/subcategory.dart';
 
 class HomeController extends GetxController {

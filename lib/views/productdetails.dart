@@ -104,10 +104,10 @@ class ProductDetailScreen extends StatelessWidget {
 
               ...[
                 {'Name': prod.name},
-                {'Serial Number': prod.serialNumber},
+                {'Product Code': prod.productCode},
                 {'Price': '\$${prod.price.toStringAsFixed(2)}'},
                 {'In stock': prod.amount.toString()},
-                {'Manufacturer ID': prod.manufacturerId.toString()},
+                {'Manufacturer': ctrl.manufacturerName.value},
                 {'Category': ctrl.categoryName.value},
                 {'Subcategory': ctrl.subcategoryName.value},
               ].map((entry) {

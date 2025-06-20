@@ -1,6 +1,4 @@
 // lib/models/product_model.dart
-import 'dart:convert';
-import 'dart:typed_data';
 import 'package:cyber_net_application/models/product/product_image.dart';
 
 class ProductDTO {
