@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 import '../api_connections/api_connect.dart';
-import '../models/order.dart';
+import '../models/order/order.dart';
 
 class OrderDetailController extends GetxController {
   var isLoading = true.obs;

@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 
-import '../models/cart.dart';
-import '../models/order.dart';
+import '../models/order/cart.dart';
+import '../models/order/order.dart';
 import '../models/product/category.dart';
 import '../models/product/fullproduct.dart';
 import '../models/product/manufacturer.dart';

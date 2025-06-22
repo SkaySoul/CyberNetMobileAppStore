@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/cart_controller.dart';
-import '../api_connections/api_connect.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -35,7 +34,7 @@ class CartScreen extends StatelessWidget {
                     color: Colors.white24,
                     margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
                     child: ListTile(
-                      title: Text(ci.name, style: TextStyle(color: Colors.white)),
+                      title: Text(ci.name, style: const TextStyle(color: Colors.white)),
                       subtitle: Text(
                         '${ci.quantity} × \$${ci.price.toStringAsFixed(2)}',
                         style: const TextStyle(color: Colors.white70),

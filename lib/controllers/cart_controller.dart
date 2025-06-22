@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 import '../api_connections/api_connect.dart';
-import '../models/cart.dart';
+import '../models/order/cart.dart';
 
 
 class CartController extends GetxController {

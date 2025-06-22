@@ -1,8 +1,8 @@
 import 'package:cyber_net_application/api_connections/api_connect.dart';
-import 'package:cyber_net_application/models/cart.dart';
+import 'package:cyber_net_application/models/order/cart.dart';
 import 'package:get/get.dart';
 
-import '../models/order.dart';
+import '../models/order/order.dart';
 import '../models/userdata/shipping_address.dart';
 import 'cart_controller.dart';
 
