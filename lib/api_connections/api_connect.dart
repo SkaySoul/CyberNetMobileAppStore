@@ -273,6 +273,15 @@ class APIConnect{
         .toList();
   }
 
+  static Future<ShippingAddressDTO> getAddressById(int id) async {
+    final url = Uri.parse('$addressesUrl/$id');
+    final resp = await http.get(url, headers: _headers());
+    if (resp.statusCode != 200) {
+      throw Exception('Cant load address: ${resp.statusCode}');
+    }
+    return ShippingAddressDTO.fromJson(jsonDecode(resp.body));
+  }
+
   static Future<ShippingAddressDTO> addAddress(
       ShippingAddressDTO address) async {
     final url = Uri.parse(addressesUrl);
